@@ -21,7 +21,7 @@ function selectScenario(scenario) {
   document.querySelectorAll('[data-view]').forEach(image => { image.hidden = image.dataset.view !== scenario; });
   document.querySelector('.scenario-description').textContent = scenario === 'room'
     ? 'Посмотрите жильё, узнайте будущего соседа и обсудите условия въезда.'
-    : 'Найдите человека с похожими привычками и бюджетом. Квартиру выберете вместе.';
+    : 'Найдите человека с похожими привычками и бюджетом. Жильё выберете вместе.';
   document.querySelector('.note-budget').innerHTML = scenario === 'room'
     ? '⌂ Комната и сосед<br><b>в одной анкете</b>' : '⌂ Сначала сосед.<br><b>Потом общий дом.</b>';
 }
