@@ -2,7 +2,10 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { join, extname } from 'node:path';
 const root = import.meta.dirname;
 let html = await readFile(join(root, 'index.html'), 'utf8');
-const css = await readFile(join(root, 'style.css'), 'utf8');
+let css = await readFile(join(root, 'style.css'), 'utf8');
+// Keep the standalone export independent of font requests.
+const font = await readFile(join(root, 'assets/GolosText.ttf'));
+css = css.replace("url('assets/GolosText.ttf')", `url('data:font/ttf;base64,${font.toString('base64')}')`);
 const js = await readFile(join(root, 'app.js'), 'utf8');
 html = html.replace(/<link rel="stylesheet" href="style.css">|<style id="landing-styles">[\s\S]*?<\/style>/, () => `<style id="landing-styles">${css}</style>`);
 html = html.replace(/<script src="app.js" defer><\/script>|<script id="landing-script">[\s\S]*?<\/script>/, '');

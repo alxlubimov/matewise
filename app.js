@@ -30,8 +30,6 @@ function selectScenario(scenario) {
   document.querySelector('.scenario-description').textContent = scenario === 'room'
     ? 'Посмотрите жильё, узнайте будущего соседа и обсудите условия въезда.'
     : 'Найдите человека с похожими привычками и бюджетом. Жильё выберете вместе.';
-  document.querySelector('.note-budget').innerHTML = scenario === 'room'
-    ? '⌂ Комната и сосед<br><b>в одной анкете</b>' : '⌂ Сначала сосед.<br><b>Потом общий дом.</b>';
 }
 document.querySelectorAll('[data-scenario]').forEach(button => button.addEventListener('click', () => selectScenario(button.dataset.scenario)));
 document.querySelectorAll('[data-pick]').forEach(button => button.addEventListener('click', () => {
