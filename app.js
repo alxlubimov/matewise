@@ -12,6 +12,14 @@ document.querySelectorAll('[data-store]').forEach(button => {
 document.querySelectorAll('.dialog-close, .dialog-ok').forEach(button => button.addEventListener('click', () => dialog.close()));
 dialog.addEventListener('click', event => { if (event.target === dialog) { const box = dialog.getBoundingClientRect(); if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) dialog.close(); } });
 document.querySelector('#year').textContent = new Date().getFullYear();
+const backToTop = document.querySelector('.back-to-top');
+function updateBackToTop() { backToTop.hidden = window.scrollY < 480; }
+window.addEventListener('scroll', updateBackToTop, { passive: true });
+updateBackToTop();
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+  document.querySelector('header .logo').focus({ preventScroll: true });
+});
 function selectScenario(scenario) {
   document.querySelectorAll('[data-scenario]').forEach(button => {
     const selected = button.dataset.scenario === scenario;
