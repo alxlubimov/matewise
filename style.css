@@ -17,3 +17,9 @@ dialog{border:1px solid var(--line);border-radius:12px;padding:36px;max-width:43
 @media(max-width:350px){.wrap{padding-inline:18px}.header .logo{font-size:19px;gap:6px}.header .logo-icon{width:27px;height:27px}.header .logo-dot{margin-left:-6px}.header .button.small{font-size:9px;padding:10px;gap:5px}.hero h1{font-size:34px}.scenario-switch{gap:15px}.scenario-switch button{font-size:12px}.store-buttons{flex-direction:column}.store-button b{font-size:17px}.store-button{padding:14px 17px;gap:15px}.download h2{font-size:26px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}.reveal{opacity:1}}
 @media print{.reveal{opacity:1}.back-to-top{display:none}.section,.scenario-section{break-inside:avoid}.header nav{display:none}}
+/* Soft motion and a single mint shape behind the product. */
+.hero-product{position:relative;isolation:isolate}.product-orbit{position:absolute;left:-2%;right:-2%;top:13%;bottom:14%;z-index:-1;background:var(--mint);opacity:.65;border-radius:48% 52% 42% 58% / 55% 45% 55% 45%;animation:orbit-breathe 12s ease-in-out infinite}.hero-screen{animation:phone-float 7s ease-in-out infinite;transform-origin:center}.reveal{transform:translateY(14px);transition:opacity .65s ease,transform .65s ease}.reveal.revealed{transform:translateY(0)}
+@keyframes phone-float{0%,100%{transform:translateY(0) rotate(.7deg)}50%{transform:translateY(-8px) rotate(-.7deg)}}
+@keyframes orbit-breathe{0%,100%{transform:rotate(-6deg) scale(1)}50%{transform:rotate(3deg) scale(1.025)}}
+@media(max-width:760px){.hero-product{width:100%;max-width:410px;margin-inline:auto}.product-orbit{left:0;right:0;top:14%;bottom:16%}}
+@media(prefers-reduced-motion:reduce){.hero-screen,.product-orbit{animation:none}.reveal{opacity:1;transform:none;transition:none}}
